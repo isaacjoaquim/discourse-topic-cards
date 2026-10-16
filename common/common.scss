@@ -1,5 +1,17 @@
 :root {
   --d-border-radius-large: 20px;
+  --topic-card-bg: #F8F8F8;
+}
+
+:root.theme-dark,
+.theme-dark {
+  --topic-card-bg: #252F3E;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.theme-light) {
+    --topic-card-bg: #F8F8F8;
+  }
 }
 
 // list
@@ -39,7 +51,7 @@ tr.topic-card,
   display: flex;
   gap: 1.5rem;
   border-radius: var(--d-border-radius-large);
-  background-color: #252F3E !important;
+  background-color: var(--topic-card-bg) !important;
   box-shadow: var(--shadow-card);
   border: 1px solid transparent;
 
@@ -75,6 +87,7 @@ tr.topic-card,
 
   // hiding core elements
   .num {
+
     &.posts,
     &.views,
     &.activity {
