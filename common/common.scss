@@ -33,13 +33,19 @@
 }
 
 // card
+.topic-cards-list .topic-card,
+tr.topic-card,
 .topic-card {
   display: flex;
   gap: 1.5rem;
   border-radius: var(--d-border-radius-large);
-  background-color: #252F3E;
+  background-color: #252F3E !important;
   box-shadow: var(--shadow-card);
   border: 1px solid transparent;
+
+  td {
+    background-color: transparent !important;
+  }
 
   .topic-cards-icon {
     display: inline-block;
