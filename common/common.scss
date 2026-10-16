@@ -38,10 +38,11 @@ tr.topic-card,
 .topic-card,
 .topic-list-item.--high-context,
 .hc-topic-card {
-  background-color: #F8F8F8 !important;
+  background: light-dark(#F8F8F8, #252F3E) !important;
+  background-color: light-dark(#F8F8F8, #252F3E) !important;
 }
 
-// Dark Mode para todos os tipos de cards
+// Dark Mode explícito quando a classe for inserida
 .theme-dark .topic-list-item.--high-context,
 .theme-dark .hc-topic-card,
 .theme-dark .topic-card,
@@ -51,33 +52,19 @@ html.theme-dark .topic-card,
 body.theme-dark .topic-list-item.--high-context,
 body.theme-dark .hc-topic-card,
 body.theme-dark .topic-card {
+  background: #252F3E !important;
   background-color: #252F3E !important;
 }
 
-// Modo escuro do navegador / sistema (usado pelo esquema Horizon Dark)
-@media (prefers-color-scheme: dark) {
-  html:not(.theme-light) {
-    .topic-list-item.--high-context,
-    .hc-topic-card,
-    .topic-cards-list .topic-card,
-    tr.topic-card,
-    .topic-card {
-      background-color: #252F3E !important;
-    }
-  }
-}
-
-// Modo claro forçado
-html.theme-light,
-body.theme-light,
-.theme-light {
-  .topic-list-item.--high-context,
-  .hc-topic-card,
-  .topic-cards-list .topic-card,
-  tr.topic-card,
-  .topic-card {
-    background-color: #F8F8F8 !important;
-  }
+// Modo claro explícito quando a classe for inserida
+html.theme-light .topic-list-item.--high-context,
+html.theme-light .hc-topic-card,
+html.theme-light .topic-card,
+body.theme-light .topic-list-item.--high-context,
+body.theme-light .hc-topic-card,
+body.theme-light .topic-card {
+  background: #F8F8F8 !important;
+  background-color: #F8F8F8 !important;
 }
 
 .topic-cards-list .topic-card,
