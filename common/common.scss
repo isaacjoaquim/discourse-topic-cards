@@ -32,32 +32,65 @@
   display: none; // for non-topic-card views, suppress the icons injected via the topic-list-before-XXX-count outlets
 }
 
-// card - Light Mode padrão
+// card - Suporte tanto ao Topic Cards padrão quanto ao tema Horizon (--high-context / .hc-topic-card)
+.topic-cards-list .topic-card,
+tr.topic-card,
+.topic-card,
+.topic-list-item.--high-context,
+.hc-topic-card {
+  background-color: #F8F8F8 !important;
+}
+
+// Dark Mode para todos os tipos de cards
+.theme-dark .topic-list-item.--high-context,
+.theme-dark .hc-topic-card,
+.theme-dark .topic-card,
+html.theme-dark .topic-list-item.--high-context,
+html.theme-dark .hc-topic-card,
+html.theme-dark .topic-card,
+body.theme-dark .topic-list-item.--high-context,
+body.theme-dark .hc-topic-card,
+body.theme-dark .topic-card {
+  background-color: #252F3E !important;
+}
+
+// Modo escuro do navegador / sistema (usado pelo esquema Horizon Dark)
+@media (prefers-color-scheme: dark) {
+  html:not(.theme-light) {
+    .topic-list-item.--high-context,
+    .hc-topic-card,
+    .topic-cards-list .topic-card,
+    tr.topic-card,
+    .topic-card {
+      background-color: #252F3E !important;
+    }
+  }
+}
+
+// Modo claro forçado
+html.theme-light,
+body.theme-light,
+.theme-light {
+  .topic-list-item.--high-context,
+  .hc-topic-card,
+  .topic-cards-list .topic-card,
+  tr.topic-card,
+  .topic-card {
+    background-color: #F8F8F8 !important;
+  }
+}
+
 .topic-cards-list .topic-card,
 tr.topic-card,
 .topic-card {
   display: flex;
   gap: 1.5rem;
   border-radius: var(--d-border-radius-large);
-  background-color: #F8F8F8 !important;
   box-shadow: var(--shadow-card);
   border: 1px solid transparent;
 
   td {
     background-color: transparent !important;
-  }
-
-  // Dark Mode quando ativado no Discourse
-  .theme-dark &,
-  html.theme-dark &,
-  body.theme-dark & {
-    background-color: #252F3E !important;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    html:not(.theme-light) & {
-      background-color: #252F3E !important;
-    }
   }
 
   .topic-cards-icon {
