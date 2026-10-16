@@ -1,29 +1,5 @@
 :root {
   --d-border-radius-large: 20px;
-  --topic-card-bg: #F8F8F8; // Light mode padrão
-}
-
-// Dark mode ativado no Discourse (html ou body)
-:root.theme-dark,
-html.theme-dark,
-body.theme-dark,
-.theme-dark {
-  --topic-card-bg: #252F3E;
-}
-
-// Quando o sistema estiver em modo escuro (a menos que o usuário force light mode no Discourse)
-@media (prefers-color-scheme: dark) {
-  :root:not(.theme-light) {
-    --topic-card-bg: #252F3E;
-  }
-}
-
-// Força o Light mode se o Discourse estiver configurado como theme-light
-:root.theme-light,
-html.theme-light,
-body.theme-light,
-.theme-light {
-  --topic-card-bg: #F8F8F8;
 }
 
 // list
@@ -56,19 +32,32 @@ body.theme-light,
   display: none; // for non-topic-card views, suppress the icons injected via the topic-list-before-XXX-count outlets
 }
 
-// card
+// card - Light Mode padrão
 .topic-cards-list .topic-card,
 tr.topic-card,
 .topic-card {
   display: flex;
   gap: 1.5rem;
   border-radius: var(--d-border-radius-large);
-  background-color: var(--topic-card-bg) !important;
+  background-color: #F8F8F8 !important;
   box-shadow: var(--shadow-card);
   border: 1px solid transparent;
 
   td {
     background-color: transparent !important;
+  }
+
+  // Dark Mode quando ativado no Discourse
+  .theme-dark &,
+  html.theme-dark &,
+  body.theme-dark & {
+    background-color: #252F3E !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not(.theme-light) & {
+      background-color: #252F3E !important;
+    }
   }
 
   .topic-cards-icon {
